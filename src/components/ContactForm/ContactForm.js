@@ -21,9 +21,6 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  // const nameId = nanoid();
-  // const numberId = nanoid();
-
   const handleChange = e => {
     const { name, value } = e.target;
     if (name === 'name') {

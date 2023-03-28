@@ -13,36 +13,55 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import css from './signUp.module.css';
-
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+//
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { registerUser } from 'components/redux/auth/authOperations';
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = event => {
+    // const data = new FormData(event.currentTarget);
+    const { name, value } = event.target;
+    if (name === 'name') {
+      setName(value);
+      return;
+    } else if (name === 'email') {
+      setEmail(value);
+      return;
+    } else if (name === 'password') {
+      setPassword(value);
+      return;
+    }
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // const data = new FormData(event.currentTarget);
+
+    const dataUser = {
+      name: `${name}`,
+      email: `${email}`,
+      password: `${password}`,
+    };
+    console.log(dataUser);
+    dispatch(registerUser(dataUser));
+    setName('');
+    setEmail('');
+    setPassword('');
   };
+  // console.log({
+  //   name: data.get('name'),
+  //   email: data.get('email'),
+  //   password: data.get('password'),
+  // });
 
   return (
     <div className={css.signUpCont}>
@@ -73,24 +92,16 @@ export default function SignUp() {
                 <Grid item xs={12}>
                   <TextField
                     autoComplete="given-name"
-                    name="firstName"
+                    name="name"
+                    value={name}
+                    onChange={handleChange}
                     required
                     fullWidth
                     id="firstName"
-                    label="First Name"
+                    label="Name"
                     autoFocus
                   />
                 </Grid>
-                {/* <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid> */}
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -98,7 +109,9 @@ export default function SignUp() {
                     id="email"
                     label="Email Address"
                     name="email"
-                    autoComplete="email"
+                    value={email}
+                    onChange={handleChange}
+                    autoComplete="off"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -106,10 +119,12 @@ export default function SignUp() {
                     required
                     fullWidth
                     name="password"
+                    value={password}
+                    onChange={handleChange}
                     label="Password"
-                    type="password"
+                    // type="password"
                     id="password"
-                    autoComplete="new-password"
+                    autoComplete="off"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -130,15 +145,10 @@ export default function SignUp() {
                 Sign Up
               </Button>
               <Grid container justifyContent="flex-end">
-                <Grid item>
-                  {/* <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link> */}
-                </Grid>
+                <Grid item></Grid>
               </Grid>
             </Box>
           </Box>
-          {/* <Copyright sx={{ mt: 5 }} /> */}
         </Container>
       </ThemeProvider>
     </div>
