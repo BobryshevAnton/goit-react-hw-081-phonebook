@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'components/redux/contacts/operations';
-import { selectContacts } from 'components/redux/contacts/selectors';
+import { addContacts } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 import Button from '@mui/material/Button';
+import Section from 'components/Section/Section';
 import css from './contactForm.module.css';
 // import { nanoid } from 'nanoid';
-import Section from 'components/Section/Section';
-//
-//
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';

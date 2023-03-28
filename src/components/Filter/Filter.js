@@ -1,14 +1,11 @@
 import { useDispatch } from 'react-redux';
-import { filterContact } from 'components/redux/contacts/filterSlice';
+import { filterContact } from 'redux/contacts/filterSlice';
 import Section from 'components/Section/Section';
-//
-
 //
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 //
-
 import css from './filter.module.css';
 
 export const Filter = () => {

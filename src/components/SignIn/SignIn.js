@@ -12,38 +12,42 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import css from './signIn.module.css';
+//
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { logIn } from 'redux/auth/authOperations';
 
-// function Copyright(props) {
-//   return (
-//     <Typography
-//       variant="body2"
-//       color="text.secondary"
-//       align="center"
-//       {...props}
-//     >
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://mui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import css from './signIn.module.css';
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    if (name === 'email') {
+      setEmail(value);
+      return;
+    } else if (name === 'password') {
+      setPassword(value);
+      return;
+    }
+  };
   const handleSubmit = event => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const dataUser = {
+      email: `${email}`,
+      password: `${password}`,
+    };
+    dispatch(logIn(dataUser));
+    setEmail('');
+    setPassword('');
+    console.log(dataUser);
   };
-
   return (
     <div className={css.signInCont}>
       <ThemeProvider theme={theme}>
@@ -76,7 +80,9 @@ export default function SignIn() {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                value={email}
+                onChange={handleChange}
+                autoComplete="off"
                 autoFocus
               />
               <TextField
@@ -84,10 +90,12 @@ export default function SignIn() {
                 required
                 fullWidth
                 name="password"
+                value={password}
+                onChange={handleChange}
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                autoComplete="off"
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -101,21 +109,9 @@ export default function SignIn() {
               >
                 Sign In
               </Button>
-              <Grid container>
-                {/* <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid> */}
-              </Grid>
+              <Grid container></Grid>
             </Box>
           </Box>
-          {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
         </Container>
       </ThemeProvider>
     </div>

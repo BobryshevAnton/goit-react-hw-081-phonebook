@@ -1,19 +1,12 @@
 import * as React from 'react';
 
-//
-//
-import css from './contactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'components/redux/contacts/operations';
-import {
-  selectContacts,
-  selectFilter,
-} from 'components/redux/contacts/selectors';
+import { deleteContact } from 'redux/contacts/operations';
+import { selectContacts, selectFilter } from 'redux/contacts/selectors';
 import Section from 'components/Section/Section';
 import Button from '@mui/material/Button';
+import css from './contactList.module.css';
 //
-//
-
 export const ContactList = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);

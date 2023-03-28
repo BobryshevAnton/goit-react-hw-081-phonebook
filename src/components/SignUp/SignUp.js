@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -16,7 +15,7 @@ import css from './signUp.module.css';
 //
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { registerUser } from 'components/redux/auth/authOperations';
+import { registerUser } from 'redux/auth/authOperations';
 
 const theme = createTheme();
 
@@ -57,11 +56,6 @@ export default function SignUp() {
     setEmail('');
     setPassword('');
   };
-  // console.log({
-  //   name: data.get('name'),
-  //   email: data.get('email'),
-  //   password: data.get('password'),
-  // });
 
   return (
     <div className={css.signUpCont}>

@@ -4,8 +4,8 @@ import { Filter } from 'components/Filter/Filter';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'components/redux/contacts/operations';
-import { selectContacts } from 'components/redux/contacts/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
 
 import css from './phoneSection.css';
 
