@@ -1,0 +1,24 @@
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.footerdStyle {
+  display: flex;
+  padding: 20px 20px;
+  border-top: 2px solid #1976d2;
+  border-bottom: 2px solid #1976d2;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.footerdTitle {
+  font-size: 20px;
+
+  font-weight: 600;
+}
+
+.footerdSubTitle {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}

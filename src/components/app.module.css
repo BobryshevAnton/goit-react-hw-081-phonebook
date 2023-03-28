@@ -1,0 +1,32 @@
+.appBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #be8f53; */
+  /* box-shadow: 10px 5px 5px rgb(170 170 170); */
+  /* border-radius: 5px; */
+  padding: 0px 20px;
+  /* margin: 10px 20px; */
+  border-top: 2px solid #1976d2;
+  border-bottom: 2px solid#1976d2;
+  margin-top: 10px;
+}
+.appNav {
+  font-size: 20px;
+  margin-right: 25px;
+  color: rgb(0, 0, 0);
+}
+.appNavLeft {
+  margin-left: 5px;
+}
+.appNavRight {
+  display: flex;
+  align-items: center;
+}
+
+.appNav:hover,
+.appNav:focus {
+  font-size: 20px;
+  margin-right: 25px;
+  color: rgb(196, 196, 196);
+}

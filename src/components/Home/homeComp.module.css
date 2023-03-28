@@ -1,0 +1,20 @@
+.homeConteiner {
+  display: flex;
+  height: 600px;
+  /* background-color: #be8f53; */
+  flex-direction: column;
+  align-items: center;
+  /* box-shadow: 10px 5px 5px rgb(170 170 170); */
+  border-radius: 5px;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+.homeTitle {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.homeImg {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 350px;
+}

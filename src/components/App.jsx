@@ -1,16 +1,27 @@
+import { Routes, Route } from 'react-router-dom';
+import { SharedLayout } from './SharedLayout';
+
+import { Home } from './Pages/Home';
+import { PhoneBook } from './Pages/PhoneBook';
+import { Register } from './Pages/Register';
+import { LogIn } from './Pages/LogIn';
+import Footer from './Footer/Footer';
+
+import { NotFound } from './Pages/NotFound';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      React hello add!
+    <div>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route index path="/phonebook" element={<PhoneBook />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/logIn" element={<LogIn />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };
