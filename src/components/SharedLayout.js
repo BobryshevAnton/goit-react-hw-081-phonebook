@@ -3,20 +3,20 @@ import Section from './Section/Section';
 import { Suspense } from 'react';
 import Button from '@mui/material/Button';
 import css from './app.module.css';
-// import { selectUserEmail } from 'redux/auth/authSelectors';
-// import { selectIsLoggedIn } from 'redux/auth/authSelectors';
-// import { useSelector } from 'react-redux';
+import { selectUserEmail } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
 //
 import { logOut } from 'redux/auth/authOperations';
 import { useDispatch } from 'react-redux';
-import { useAuth } from './useAuth';
+// import { useAuth } from './useAuth';
 
 export const SharedLayout = () => {
   const dispatch = useDispatch();
-  // const userEmail = useSelector(selectUserEmail);
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { userEmail } = useAuth();
-  const { isLoggedIn } = useAuth();
+  const userEmail = useSelector(selectUserEmail);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const { userEmail } = useAuth();
+  // const { isLoggedIn } = useAuth();
 
   return (
     <Section>
