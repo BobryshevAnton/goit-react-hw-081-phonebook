@@ -1,27 +1,77 @@
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+// import { SharedLayout } from './SharedLayout';
+
+// import { Home } from './Pages/Home';
+// import { PhoneBook } from './Pages/PhoneBook';
+// import { Register } from './Pages/Register';
+// import { LogIn } from './Pages/LogIn';
+// import Footer from './Footer/Footer';
+
+// import { NotFound } from './Pages/NotFound';
+
+// export const App = () => {
+//   return (
+//     <div>
+//       <Routes>
+//         <Route path="/" element={<SharedLayout />}>
+//           <Route index element={<Home />} />
+//           <Route index path="/contacts" element={<PhoneBook />} />
+//           <Route path="/register" element={<Register />} />
+//           <Route path="/logIn" element={<LogIn />} />
+//         </Route>
+//         <Route path="*" element={<NotFound />} />
+//       </Routes>
+//       {/* <Footer /> */}
+//     </div>
+//   );
+// };
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/authOperations';
+import { useAuth } from './useAuth';
 
-import { Home } from './Pages/Home';
-import { PhoneBook } from './Pages/PhoneBook';
-import { Register } from './Pages/Register';
-import { LogIn } from './Pages/LogIn';
-import Footer from './Footer/Footer';
-
-import { NotFound } from './Pages/NotFound';
+const Home = lazy(() => import('./Pages/Home'));
+const Register = lazy(() => import('./Pages/Register'));
+const LogIn = lazy(() => import('./Pages/LogIn'));
+const PhoneBook = lazy(() => import('./Pages/PhoneBook'));
 
 export const App = () => {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route index path="/phonebook" element={<PhoneBook />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/logIn" element={<LogIn />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LogIn />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<PhoneBook />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };

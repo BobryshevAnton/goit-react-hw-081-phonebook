@@ -45,8 +45,3 @@ export const ContactList = () => {
     </Section>
   );
 };
-// "start": "react-scripts start",
-// "build": "CI=false && react-scripts build",
-// "test": "react-scripts test",
-// "eject": "react-scripts eject",
-// "lint:js": "eslint src/**/*.{js,jsx}"
