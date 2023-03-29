@@ -28,7 +28,7 @@ export const ContactList = () => {
       <ul className={css.contactList}>
         {filterContact.map(elem => (
           <li key={elem.id} className={css.contactItem}>
-            &#8226;{elem.name}: {elem.phone}
+            &#8226;{elem.name}: {elem.number}
             <Button
               type="button"
               variant="contained"

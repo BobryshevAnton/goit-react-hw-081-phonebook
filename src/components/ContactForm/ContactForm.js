@@ -35,7 +35,7 @@ export const ContactForm = () => {
     evt.preventDefault();
     const newContact = {
       name: `${name}`,
-      phone: `${number}`,
+      number: `${number}`,
     };
     const inclCont = items.items.some(item => item.name === name);
     if (inclCont) {
