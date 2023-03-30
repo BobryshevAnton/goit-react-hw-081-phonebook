@@ -3,7 +3,12 @@ import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-import { useAuth } from './useAuth';
+
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { selectIsRefreshing } from 'redux/auth/authSelectors';
+import { refreshUser } from 'redux/auth/authOperations';
 import Footer from './Footer/Footer';
 const Home = lazy(() => import('./Pages/Home'));
 const Register = lazy(() => import('./Pages/Register'));
@@ -11,9 +16,14 @@ const LogIn = lazy(() => import('./Pages/LogIn'));
 const PhoneBook = lazy(() => import('./Pages/PhoneBook'));
 
 export const App = () => {
-  const { isRefreshing } = useAuth();
+  const dispatch = useDispatch();
+  const isRefrishing = useSelector(selectIsRefreshing);
 
-  return isRefreshing ? (
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefrishing ? (
     <b>Refreshing user...</b>
   ) : (
     <>
