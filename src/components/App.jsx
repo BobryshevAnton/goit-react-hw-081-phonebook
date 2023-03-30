@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
-
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/authOperations';
