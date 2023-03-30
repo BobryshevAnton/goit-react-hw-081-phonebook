@@ -6,17 +6,14 @@ import css from './app.module.css';
 import { selectUserEmail } from 'redux/auth/authSelectors';
 import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { useSelector } from 'react-redux';
-//
+ 
 import { logOut } from 'redux/auth/authOperations';
-import { useDispatch } from 'react-redux';
-// import { useAuth } from './useAuth';
+import { useDispatch } from 'react-redux'; 
 
 export const SharedLayout = () => {
   const dispatch = useDispatch();
   const userEmail = useSelector(selectUserEmail);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const { userEmail } = useAuth();
-  // const { isLoggedIn } = useAuth();
+  const isLoggedIn = useSelector(selectIsLoggedIn); 
 
   return (
     <Section>

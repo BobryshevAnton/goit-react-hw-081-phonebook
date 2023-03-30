@@ -9,14 +9,12 @@ import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 import { fetchContacts } from 'redux/contacts/operations';
 
 export const PhoneBook = () => {
-  //
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  //
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
   return (
     <Section>
       <div>{isLoggedIn && 'Request in progress...'}</div>

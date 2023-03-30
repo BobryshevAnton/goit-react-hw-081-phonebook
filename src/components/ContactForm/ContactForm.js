@@ -5,15 +5,12 @@ import { selectContacts } from 'redux/contacts/selectors';
 import Button from '@mui/material/Button';
 import Section from 'components/Section/Section';
 import css from './contactForm.module.css';
-// import { nanoid } from 'nanoid';
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-//
 
 export const ContactForm = () => {
-  //
   const dispatch = useDispatch();
   const items = useSelector(selectContacts);
 

@@ -12,11 +12,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import css from './signUp.module.css';
-//
+
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { registerUser } from 'redux/auth/authOperations';
-
 const theme = createTheme();
 
 export default function SignUp() {
@@ -27,7 +26,6 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
 
   const handleChange = event => {
-    // const data = new FormData(event.currentTarget);
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
@@ -43,8 +41,6 @@ export default function SignUp() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-
     const dataUser = {
       name: `${name}`,
       email: `${email}`,
@@ -56,7 +52,6 @@ export default function SignUp() {
     setEmail('');
     setPassword('');
   };
-
   return (
     <div className={css.signUpCont}>
       <ThemeProvider theme={theme}>
@@ -116,7 +111,6 @@ export default function SignUp() {
                     value={password}
                     onChange={handleChange}
                     label="Password"
-                    // type="password"
                     id="password"
                     autoComplete="off"
                   />

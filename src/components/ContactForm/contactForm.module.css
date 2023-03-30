@@ -1,3 +1,6 @@
+.form__cont {
+  height: 700px;
+}
 .form__label {
   display: flex;
   flex-direction: column;

@@ -2,7 +2,6 @@ p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
-
 .footerdStyle {
   display: flex;
   padding: 20px 20px;
@@ -12,13 +11,12 @@ p {
   justify-content: space-between;
 }
 .footerdTitle {
-  font-size: 20px;
+  font-size: 18px;
 
   font-weight: 600;
 }
-
 .footerdSubTitle {
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 0px;
   margin-bottom: 5px;
 }
